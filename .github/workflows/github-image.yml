@@ -48,13 +48,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         # - run: ${{needs.Pre_Reqs.outputs}}
-        # - name: Check out the repository 
-        #   uses: actions/checkout@v3
+        - name: Check out the repository 
+          uses: actions/checkout@v3
         # - name: Login to GitHub
         #   run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
           run: |
-            bash jobs1.sh
+            bash /jobs.sh
             docker build yellow/ --tag ghcr.io/wasim-iqbal/yellow-app:latest
             docker push ghcr.io/wasim-iqbal/yellow-app:latest
   
@@ -63,8 +63,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         # - run: ${{needs.Pre_Reqs.outputs}}
-        # - name: Check out the repository 
-        #   uses: actions/checkout@v3
+        - name: Check out the repository 
+          uses: actions/checkout@v3
         # - name: Login to GitHub
         #   run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
