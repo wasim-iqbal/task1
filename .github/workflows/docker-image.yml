@@ -25,5 +25,6 @@ jobs:
           uses: docker/build-push-action@v4
           with:
               context: nginx-load-balancer/
+              dockerfile: ./Dockerfile
               push: true
               tags: wasimiqbalsidhu/task1:latest
