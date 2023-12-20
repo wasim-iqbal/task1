@@ -23,8 +23,8 @@ jobs:
   Red_app:
     runs-on: ubuntu-latest
     steps:
-        - name: Check out the repository 
-          uses: actions/checkout@v3
+        # - name: Check out the repository 
+        #   uses: actions/checkout@v3
         - name: Login to GitHub
           run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
@@ -35,8 +35,8 @@ jobs:
   Yellow_app:
     runs-on: ubuntu-latest
     steps:
-        - name: Check out the repository 
-          uses: actions/checkout@v3
+        # - name: Check out the repository 
+        #   uses: actions/checkout@v3
         - name: Login to GitHub
           run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
@@ -47,8 +47,8 @@ jobs:
   Green_app:
     runs-on: ubuntu-latest
     steps:
-        - name: Check out the repository 
-          uses: actions/checkout@v3
+        # - name: Check out the repository 
+        #   uses: actions/checkout@v3
         - name: Login to GitHub
           run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
