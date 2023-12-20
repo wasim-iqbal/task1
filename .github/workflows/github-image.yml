@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  job-1:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,17 +21,26 @@ jobs:
           run: |
             docker build nginx-load-balancer/ --tag ghcr.io/wasim-iqbal/nginx-load-balancer:latest
             docker push ghcr.io/wasim-iqbal/nginx-load-balancer:latest
-        
+  job-2:
+    runs-on: ubuntu-latest
+
+    steps:
         - name: Red App build and Push
           run: |
             docker build red/ --tag ghcr.io/wasim-iqbal/red-app:latest
             docker push ghcr.io/wasim-iqbal/red-app:latest
-        
+  job-3:
+    runs-on: ubuntu-latest
+
+    steps:
         - name: Yellow App build and Push
           run: |
             docker build yellow/ --tag ghcr.io/wasim-iqbal/yellow-app:latest
             docker push ghcr.io/wasim-iqbal/yellow-app:latest
-        
+  job-4:
+    runs-on: ubuntu-latest
+
+    steps:     
         - name: Green build and Push
           run: |
             docker build green/ --tag ghcr.io/wasim-iqbal/green-app:latest
