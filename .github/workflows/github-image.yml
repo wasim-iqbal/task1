@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  job-1:
+  Nginx_Load_Balancer:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,32 +16,37 @@ jobs:
 
         - name: Login to GitHub
           run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
-      
-        - name: Nginx Load Balancer build and Push
+        - name: Build and Push
           run: |
             docker build nginx-load-balancer/ --tag ghcr.io/wasim-iqbal/nginx-load-balancer:latest
             docker push ghcr.io/wasim-iqbal/nginx-load-balancer:latest
-  job-2:
+  
+  Red_app:
     runs-on: ubuntu-latest
-
     steps:
-        - name: Red App build and Push
+        - name: Check out the repository 
+          uses: actions/checkout@v3
+        - name: Build and Push
           run: |
             docker build red/ --tag ghcr.io/wasim-iqbal/red-app:latest
             docker push ghcr.io/wasim-iqbal/red-app:latest
-  job-3:
+  
+  Yellow_app:
     runs-on: ubuntu-latest
-
     steps:
-        - name: Yellow App build and Push
+        - name: Check out the repository 
+          uses: actions/checkout@v3
+        - name: Build and Push
           run: |
             docker build yellow/ --tag ghcr.io/wasim-iqbal/yellow-app:latest
             docker push ghcr.io/wasim-iqbal/yellow-app:latest
-  job-4:
+  
+  Green_app:
     runs-on: ubuntu-latest
-
-    steps:     
-        - name: Green build and Push
+    steps:
+        - name: Check out the repository 
+          uses: actions/checkout@v3
+        - name: Build and Push
           run: |
             docker build green/ --tag ghcr.io/wasim-iqbal/green-app:latest
             docker push ghcr.io/wasim-iqbal/green-app:latest
