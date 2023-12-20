@@ -1,0 +1,30 @@
+name: Docker Image Build and Push
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Check out the repository 
+          uses: actions/checkout@v3
+              #run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+        - name: Login to Docker Hub
+          uses: docker/login-actions@v2
+          with:
+              username: ${{ secret.DOCKERHUB_USERNAME }}
+              password: ${{ secret.DOCKERHUB_PASSWORD }}
+      
+        - name: Docker build and Push
+          uses: docker/build-push-actions@v4
+          with:
+              context: nginx-load-balancer/
+              # push: true
+              # tag: 
+              run: docker push wasimiqbalsidhu/task1
