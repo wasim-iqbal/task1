@@ -26,4 +26,4 @@ jobs:
           with:
               context: nginx-load-balancer/
               push: true
-              tag: wasimiqbalsidhu/task1:latest
+              tags: wasimiqbalsidhu/task1:latest
