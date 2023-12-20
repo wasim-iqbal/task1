@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        # - name: Check out the repository 
-        #   uses: actions/checkout@v3
+        - name: Check out the repository 
+          uses: actions/checkout@v3
         - name: Login to GitHub
           run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
@@ -32,8 +32,8 @@ jobs:
     # needs: Pre_Reqs
     runs-on: ubuntu-latest
     steps:
-        # - name: Check out the repository 
-        #   uses: actions/checkout@v3
+        - name: Check out the repository 
+          uses: actions/checkout@v3
         - name: Login to GitHub
           run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
@@ -45,8 +45,8 @@ jobs:
     # needs: Pre_Reqs
     runs-on: ubuntu-latest
     steps:
-        # - name: Check out the repository 
-        #   uses: actions/checkout@v3
+        - name: Check out the repository 
+          uses: actions/checkout@v3
         - name: Login to GitHub
           run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
