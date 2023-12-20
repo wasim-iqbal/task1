@@ -1,1 +1,1 @@
-run docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
+run docker login --username wasim-iqbal --password ${{ secrets.GH_PAS }} ghcr.io
