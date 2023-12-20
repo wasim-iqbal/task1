@@ -35,4 +35,4 @@ jobs:
         - name: Green build and Push
           run: |
             docker build green/ --tag ghcr.io/wasim-iqbal/geen-app:latest
-            docker push ghcr.io/wasim-iqbal/green-app:latest
+            docker push ghcr.io/wasim-iqbal/green-app:v1.0
