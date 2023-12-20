@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+        - run: ${{needs.Pre_Reqs.needs}}
         # - name: Check out the repository 
         #   uses: actions/checkout@v3
         # - name: Login to GitHub
@@ -29,39 +30,42 @@ jobs:
             docker push ghcr.io/wasim-iqbal/nginx-load-balancer:latest
   
   Red_app:
-    # needs: Pre_Reqs
+    needs: Pre_Reqs
     runs-on: ubuntu-latest
     steps:
-        - name: Check out the repository 
-          uses: actions/checkout@v3
-        - name: Login to GitHub
-          run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
+        - run: echo ${{needs.Pre_Reqs.needs}}
+        # - name: Check out the repository 
+        #   uses: actions/checkout@v3
+        # - name: Login to GitHub
+        #   run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
           run: |
             docker build red/ --tag ghcr.io/wasim-iqbal/red-app:latest
             docker push ghcr.io/wasim-iqbal/red-app:latest
   
   Yellow_app:
-    # needs: Pre_Reqs
+    needs: Pre_Reqs
     runs-on: ubuntu-latest
     steps:
-        - name: Check out the repository 
-          uses: actions/checkout@v3
-        - name: Login to GitHub
-          run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
+        - run: ${{needs.Pre_Reqs.outputs}}
+        # - name: Check out the repository 
+        #   uses: actions/checkout@v3
+        # - name: Login to GitHub
+        #   run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
           run: |
             docker build yellow/ --tag ghcr.io/wasim-iqbal/yellow-app:latest
             docker push ghcr.io/wasim-iqbal/yellow-app:latest
   
   Green_app:
-    # needs: Pre_Reqs
+    needs: Pre_Reqs
     runs-on: ubuntu-latest
     steps:
-        - name: Check out the repository 
-          uses: actions/checkout@v3
-        - name: Login to GitHub
-          run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
+        - run: ${{needs.Pre_Reqs.outputs}}
+        # - name: Check out the repository 
+        #   uses: actions/checkout@v3
+        # - name: Login to GitHub
+        #   run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
           run: |
             docker build green/ --tag ghcr.io/wasim-iqbal/green-app:latest
