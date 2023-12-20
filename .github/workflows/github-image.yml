@@ -20,4 +20,4 @@ jobs:
         - name: Docker build and Push
           run: |
             docker build nginx-load-balancer/ --tag ghcr.io/wasim-iqbal/nginx-load-balancer:latest
-            docker push ghcr.io/wasim-iqbal/task11:latest
+            docker push ghcr.io/wasim-iqbal/nginx-load-balancer:latest
