@@ -17,7 +17,22 @@ jobs:
         - name: Login to GitHub
           run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
       
-        - name: Docker build and Push
+        - name: Nginx Load Balancer build and Push
           run: |
             docker build nginx-load-balancer/ --tag ghcr.io/wasim-iqbal/nginx-load-balancer:latest
             docker push ghcr.io/wasim-iqbal/nginx-load-balancer:latest
+        
+        - name: Red App build and Push
+          run: |
+            docker build red/ --tag ghcr.io/wasim-iqbal/red-app:latest
+            docker push ghcr.io/wasim-iqbal/red-app:latest
+        
+        - name: Yellow App build and Push
+          run: |
+            docker build yellow/ --tag ghcr.io/wasim-iqbal/yellow-app:latest
+            docker push ghcr.io/wasim-iqbal/yellow-app:latest
+        
+        - name: Green build and Push
+          run: |
+            docker build green/ --tag ghcr.io/wasim-iqbal/geen-app:latest
+            docker push ghcr.io/wasim-iqbal/green-app:latest
