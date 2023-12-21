@@ -17,8 +17,8 @@ jobs:
           run: docker login --username ${{ secrets.GHCR_USER }} --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
           run: |
-            docker build nginx-load-balancer/ --tag ghcr.io/wasim-iqbal/nginx-load-balancer:latest
-            docker push ghcr.io/wasim-iqbal/nginx-load-balancer:latest
+            docker build nginx-load-balancer/ --tag ghcr.io/${{ secrets.GHCR_USER }}/nginx-load-balancer:latest
+            docker push ghcr.io/${{ secrets.GHCR_USER }}/nginx-load-balancer:latest
   
   Red_app:
     runs-on: ubuntu-latest
@@ -29,8 +29,8 @@ jobs:
           run: docker login --username ${{ secrets.GHCR_USER }} --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
           run: |
-            docker build red/ --tag ghcr.io/wasim-iqbal/red-app:latest
-            docker push ghcr.io/wasim-iqbal/red-app:latest
+            docker build red/ --tag ghcr.io/${{ secrets.GHCR_USER }}/red-app:latest
+            docker push ghcr.io/${{ secrets.GHCR_USER }}/red-app:latest
   
   Yellow_app:
     runs-on: ubuntu-latest
@@ -41,8 +41,8 @@ jobs:
           run: docker login --username ${{ secrets.GHCR_USER }} --password ${{ secrets.GHCR_TOKEN }} ghcr.io
         - name: Build and Push
           run: |
-            docker build yellow/ --tag ghcr.io/wasim-iqbal/yellow-app:latest
-            docker push ghcr.io/wasim-iqbal/yellow-app:latest
+            docker build yellow/ --tag ghcr.io/${{ secrets.GHCR_USER }}/yellow-app:latest
+            docker push ghcr.io/${{ secrets.GHCR_USER }}/yellow-app:latest
   
   Green_app:
     runs-on: ubuntu-latest
