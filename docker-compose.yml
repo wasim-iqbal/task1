@@ -1,32 +1,38 @@
 services:
   red-app:
-    image: trafficlight/red:v1.0
-    build:
-      context: ./red/
-      dockerfile: ./Dockerfile
+    image: "ghcr.io/wasim-iqbal/red-app:latest"
+    # image: trafficlight/red:v1.0
+    # build:
+    #   context: ./red/
+    #   dockerfile: ./Dockerfile
     networks:
       - traffic-light
     
   green-app:
-    image: trafficlight/green:v1.0
-    build:
-      context: ./green/
-      dockerfile: ./Dockerfile
+    image: "ghcr.io/wasim-iqbal/green-app:latest"
+    # image: trafficlight/green:v1.0
+    # build:
+    #   context: ./green/
+    #   dockerfile: ./Dockerfile
     networks:
       - traffic-light
 
   yellow-app:
-    image: trafficlight/yellow:v1.0
-    build:
-      context: ./yellow/
-      dockerfile: ./Dockerfile
+    image: "ghcr.io/wasim-iqbal/yellow-app:latest"
+    # image: trafficlight/yellow:v1.0
+    # build:
+    #   context: ./yellow/
+    #   dockerfile: ./Dockerfile
     networks:
       - traffic-light
 
   nginx-load-balancer:
-    build:
-      context: ./nginx-load-balancer/
-      dockerfile: ./Dockerfile
+    # build:
+    #   context: ./nginx-load-balancer/
+    #   dockerfile: ./Dockerfile
+    # image: wasimiqbalsidhu/task1:latest
+    image: "ghcr.io/wasim-iqbal/task11:latest"
+ 
     ports:
       - "80:80"
       - "3000:3000"

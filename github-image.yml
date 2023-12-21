@@ -1,0 +1,59 @@
+name: Docker Image Build and Push
+
+on:
+  push:
+    branches: [ "main", "extra" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  Nginx_Load_Balancer:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Check out the repository 
+          uses: actions/checkout@v3
+        - name: Login to GitHub
+          run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
+        - name: Build and Push
+          run: |
+            docker build nginx-load-balancer/ --tag ghcr.io/wasim-iqbal/nginx-load-balancer:latest
+            docker push ghcr.io/wasim-iqbal/nginx-load-balancer:latest
+  
+  Red_app:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Check out the repository 
+          uses: actions/checkout@v3
+        - name: Login to GitHub
+          run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
+        - name: Build and Push
+          run: |
+            docker build red/ --tag ghcr.io/wasim-iqbal/red-app:latest
+            docker push ghcr.io/wasim-iqbal/red-app:latest
+  
+  Yellow_app:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Check out the repository 
+          uses: actions/checkout@v3
+        - name: Login to GitHub
+          run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
+        - name: Build and Push
+          run: |
+            bash jobs.sh
+            docker build yellow/ --tag ghcr.io/wasim-iqbal/yellow-app:latest
+            docker push ghcr.io/wasim-iqbal/yellow-app:latest
+  
+  Green_app:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Check out the repository 
+          uses: actions/checkout@v3
+        - name: Login to GitHub
+          run: docker login --username wasim-iqbal --password ${{ secrets.GHCR_TOKEN }} ghcr.io
+        - name: Build and Push
+          run: |
+            bash jobs.sh
+            docker build green/ --tag ghcr.io/wasim-iqbal/green-app:latest
+            docker push ghcr.io/wasim-iqbal/green-app:latest
